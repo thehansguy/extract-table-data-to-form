@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Table row data extraction</title>
   </head>
@@ -16,7 +15,7 @@
     <label for="age">Age</label>
     <input type="text" name="fname" id="age" />
 
-    <table>
+    <table id="table" border="1">
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
@@ -43,5 +42,18 @@
         <td>21</td>
       </tr>
     </table>
+
+    <script>
+      let table = document.getElementById("table"),
+        rIndex;
+      for (let i = 0; i < table.rows.length; i++) {
+        table.rows[i].onclick = function () {
+          rIndex = this.rowIndex;
+          document.getElementById("fname").value = this.cells[0].innerHTML;
+          document.getElementById("lname").value = this.cells[1].innerHTML;
+          document.getElementById("age").value = this.cells[2].innerHTML;
+        };
+      }
+    </script>
   </body>
 </html>
